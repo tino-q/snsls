@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { company, contact, legal, footerSections, copyright } from '../../config/travel-agency-config';
 import './Footer.css';
 
@@ -18,20 +19,32 @@ const Footer: React.FC = () => {
           </div>
           <div className="footer-section">
             <h3>Información Legal</h3>
-            {footerSections.legalLinks.map((link, index) => (
-              <a key={index} href={link.href}>{link.text}</a>
-            ))}
+            {footerSections.legalLinks.map((link, index) => {
+              // Map the legal links to actual routes
+              let route = link.href;
+              if (link.text === "Aviso Legal") {
+                route = "/aviso-legal";
+              } else if (link.text === "Política de Privacidad") {
+                route = "/politica-privacidad";
+              }
+              
+              return (
+                <Link key={index} to={route} className="footer-link">
+                  {link.text}
+                </Link>
+              );
+            })}
           </div>
           <div className="footer-section">
             <h3>Servicios</h3>
             {footerSections.services.map((service, index) => (
-              <a key={index} href={service.href}>{service.text}</a>
+              <a key={index} href={service.href} className="footer-link">{service.text}</a>
             ))}
           </div>
           <div className="footer-section">
             <h3>Destinos en Argentina</h3>
             {footerSections.destinations.map((destination, index) => (
-              <a key={index} href={destination.href}>{destination.text}</a>
+              <a key={index} href={destination.href} className="footer-link">{destination.text}</a>
             ))}
           </div>
         </div>

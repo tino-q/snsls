@@ -41,6 +41,10 @@
   --container-2xl: 1536px;
   --container-padding: clamp(1rem, 4vw, 2rem);
   
+  /* Header */
+  --header-height: 80px;
+  --header-height-mobile: 60px;
+  
   /* Transitions */
   --transition-fast: 0.15s ease;
   --transition-base: 0.3s ease;
@@ -61,6 +65,20 @@ body {
   font-weight: 400;
   font-size: var(--font-size-base);
   min-width: 400px;
+}
+
+/* App Layout */
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Main Content Area */
+main {
+  flex: 1;
+  /* Account for fixed header */
+  padding-top: var(--header-height);
 }
 
 .container {
@@ -165,6 +183,10 @@ body {
 
 /* Mobile specific adjustments */
 @media (max-width: 767px) {
+  main {
+    padding-top: var(--header-height-mobile);
+  }
+  
   .section {
     padding: var(--space-3xl) 0;
   }

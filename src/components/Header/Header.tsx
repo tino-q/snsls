@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { company, legal } from '../../config/travel-agency-config';
-import './Header.css';
+import React, { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { company, legal } from "../../config/travel-agency-config";
+import "./Header.css";
 
 const Header: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -11,21 +13,6 @@ const Header: React.FC = () => {
 
   const closeMobileMenu = () => {
     setIsMobileMenuOpen(false);
-  };
-
-  const handleNavClick = (href: string) => {
-    closeMobileMenu();
-    
-    const target = document.querySelector(href);
-    if (target) {
-      const headerHeight = document.querySelector('header')?.offsetHeight || 0;
-      const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-      
-      window.scrollTo({
-        top: targetPosition,
-        behavior: 'smooth'
-      });
-    }
   };
 
   useEffect(() => {
@@ -36,28 +23,30 @@ const Header: React.FC = () => {
     };
 
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && isMobileMenuOpen) {
+      if (e.key === "Escape" && isMobileMenuOpen) {
         closeMobileMenu();
       }
     };
 
-    window.addEventListener('resize', handleResize);
-    document.addEventListener('keydown', handleKeyDown);
-    document.body.style.overflow = isMobileMenuOpen ? 'hidden' : '';
+    window.addEventListener("resize", handleResize);
+    document.addEventListener("keydown", handleKeyDown);
+    document.body.style.overflow = isMobileMenuOpen ? "hidden" : "";
 
     return () => {
-      window.removeEventListener('resize', handleResize);
-      document.removeEventListener('keydown', handleKeyDown);
-      document.body.style.overflow = '';
+      window.removeEventListener("resize", handleResize);
+      document.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "";
     };
   }, [isMobileMenuOpen]);
 
   const navItems = [
-    { text: 'Inicio', href: '#inicio' },
-    { text: 'Servicios', href: '#servicios' },
-    { text: 'Argentina', href: '#argentina' },
-    { text: 'Legal', href: '#legal' },
-    { text: 'Contacto', href: '#contacto' }
+    { text: "Inicio", href: "/", isHome: true },
+    { text: "Aviso Legal", href: "/aviso-legal", isHome: false },
+    {
+      text: "Política de Privacidad",
+      href: "/politica-privacidad",
+      isHome: false,
+    },
   ];
 
   return (
@@ -65,9 +54,9 @@ const Header: React.FC = () => {
       <header className="header">
         <div className="header-container">
           <div className="header-left">
-            <a href="#" className="logo" onClick={(e) => { e.preventDefault(); handleNavClick('#inicio'); }}>
+            <Link to="/" className="logo">
               {company.name}
-            </a>
+            </Link>
             <div className="license-info">
               <div>Agencia de Viajes Autorizada</div>
               <div>CICMA: {legal.cicma}</div>
@@ -80,13 +69,15 @@ const Header: React.FC = () => {
             <ul className="nav-list">
               {navItems.map((item, index) => (
                 <li key={index}>
-                  <a 
-                    href={item.href} 
-                    className="nav-link"
-                    onClick={(e) => { e.preventDefault(); handleNavClick(item.href); }}
+                  <Link
+                    to={item.href}
+                    className={`nav-link ${
+                      location.pathname === item.href ? "active" : ""
+                    }`}
+                    onClick={closeMobileMenu}
                   >
                     {item.text}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -94,8 +85,10 @@ const Header: React.FC = () => {
 
           {/* Mobile Navigation */}
           <nav className="nav-mobile">
-            <button 
-              className={`mobile-menu-toggle ${isMobileMenuOpen ? 'active' : ''}`}
+            <button
+              className={`mobile-menu-toggle ${
+                isMobileMenuOpen ? "active" : ""
+              }`}
               aria-label="Toggle menu"
               onClick={toggleMobileMenu}
             >
@@ -107,25 +100,27 @@ const Header: React.FC = () => {
         </div>
 
         {/* Mobile Menu */}
-        <div className={`mobile-menu ${isMobileMenuOpen ? 'active' : ''}`}>
+        <div className={`mobile-menu ${isMobileMenuOpen ? "active" : ""}`}>
           <ul className="mobile-menu-list">
             {navItems.map((item, index) => (
               <li key={index}>
-                <a 
-                  href={item.href} 
-                  className="mobile-menu-link"
-                  onClick={(e) => { e.preventDefault(); handleNavClick(item.href); }}
+                <Link
+                  to={item.href}
+                  className={`mobile-menu-link ${
+                    location.pathname === item.href ? "active" : ""
+                  }`}
+                  onClick={closeMobileMenu}
                 >
                   {item.text}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
         </div>
-        
+
         {/* Mobile Overlay */}
-        <div 
-          className={`mobile-overlay ${isMobileMenuOpen ? 'active' : ''}`}
+        <div
+          className={`mobile-overlay ${isMobileMenuOpen ? "active" : ""}`}
           onClick={closeMobileMenu}
         ></div>
       </header>

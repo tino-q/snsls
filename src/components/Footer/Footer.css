@@ -24,7 +24,8 @@ footer {
   line-height: 1.6;
 }
 
-.footer-section a {
+.footer-section a,
+.footer-section .footer-link {
   color: rgba(255, 255, 255, 0.7);
   text-decoration: none;
   display: block;
@@ -33,7 +34,8 @@ footer {
   font-weight: 400;
 }
 
-.footer-section a:hover {
+.footer-section a:hover,
+.footer-section .footer-link:hover {
   color: var(--color-primary);
 }
 
