@@ -2,8 +2,8 @@
 .hero {
   height: 100vh;
   min-height: 600px;
-  background: linear-gradient(var(--color-overlay), rgba(0,0,0,0.5)), 
-              url('/patagonia3.jpg');
+  background: linear-gradient(var(--color-overlay), rgba(0, 0, 0, 0.5)),
+    url("/patagonia3.jpg");
   background-size: cover;
   background-position: center;
   display: flex;
@@ -15,13 +15,17 @@
 }
 
 .hero::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(45deg, rgba(0,102,204,0.1), rgba(0,150,136,0.1));
+  background: linear-gradient(
+    45deg,
+    rgba(0, 102, 204, 0.1),
+    rgba(0, 150, 136, 0.1)
+  );
 }
 
 .hero-content {
@@ -67,7 +71,7 @@
   .hero {
     background-attachment: fixed;
   }
-  
+
   .hero-content {
     margin-top: var(--space-2xl);
   }
@@ -88,7 +92,7 @@
     background-position: center 30%;
     padding-top: 80px;
   }
-  
+
   .hero-content {
     margin-top: var(--space-lg);
   }

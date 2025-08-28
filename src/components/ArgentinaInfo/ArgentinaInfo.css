@@ -20,13 +20,13 @@
 }
 
 .parallax-section::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5));
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5));
   z-index: 1;
 }
 
@@ -51,11 +51,11 @@
 }
 
 .parallax-1 {
-  background-image: url('/patagonia1.jpg');
+  background-image: url("/patagonia1.jpg");
 }
 
 .parallax-2 {
-  background-image: url('/patagonia2.jpg');
+  background-image: url("/patagonia2.jpg");
 }
 
 .parallax-divider {
@@ -130,24 +130,24 @@
     background-attachment: scroll;
     background-position: center 40%;
   }
-  
+
   .parallax-divider {
     height: 40vh;
     min-height: 300px;
   }
-  
+
   .parallax-content h2 {
     font-size: var(--font-size-3xl) !important;
   }
-  
+
   .parallax-text h3 {
     font-size: var(--font-size-xl);
   }
-  
+
   .parallax-text p {
     font-size: var(--font-size-base);
   }
-  
+
   .info-grid {
     grid-template-columns: 1fr;
     gap: 2rem;
