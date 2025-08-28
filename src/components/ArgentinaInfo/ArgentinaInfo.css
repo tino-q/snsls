@@ -1,0 +1,155 @@
+.argentina-info {
+  padding: 0;
+  background: white;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Parallax Gallery Section */
+.parallax-section {
+  height: 100vh;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  color: var(--color-white);
+}
+
+.parallax-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5));
+  z-index: 1;
+}
+
+.parallax-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 800px;
+  padding: 0 var(--container-padding);
+}
+
+.parallax-content h2 {
+  font-size: var(--font-size-4xl);
+  font-weight: 700;
+  margin-bottom: var(--space-lg);
+  line-height: 1.1;
+}
+
+.parallax-content p {
+  font-size: var(--font-size-lg);
+  opacity: 0.9;
+}
+
+.parallax-1 {
+  background-image: url('/patagonia1.jpg');
+}
+
+.parallax-2 {
+  background-image: url('/patagonia2.jpg');
+}
+
+.parallax-divider {
+  height: 50vh;
+  background: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 3;
+}
+
+.parallax-text {
+  max-width: 600px;
+  text-align: center;
+  padding: 0 var(--container-padding);
+}
+
+.parallax-text h3 {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  margin-bottom: var(--space-md);
+  color: var(--color-text);
+}
+
+.parallax-text p {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-light);
+  line-height: 1.6;
+}
+
+.info-section {
+  background: white;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 3rem;
+  margin-top: 4rem;
+}
+
+.info-card {
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.info-card-icon {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
+.info-card h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #1a1a1a;
+}
+
+.info-card p {
+  color: #666;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+/* Mobile specific adjustments */
+@media (max-width: 767px) {
+  .parallax-section {
+    height: 50vh;
+    min-height: 300px;
+    background-attachment: scroll;
+    background-position: center 40%;
+  }
+  
+  .parallax-divider {
+    height: 40vh;
+    min-height: 300px;
+  }
+  
+  .parallax-content h2 {
+    font-size: var(--font-size-3xl) !important;
+  }
+  
+  .parallax-text h3 {
+    font-size: var(--font-size-xl);
+  }
+  
+  .parallax-text p {
+    font-size: var(--font-size-base);
+  }
+  
+  .info-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}

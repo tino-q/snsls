@@ -2,7 +2,7 @@
 import fs from "node:fs/promises";
 import puppeteer from "puppeteer";
 
-const URL = "https://sonsolesstays.com/"; // <-- your homepage
+const URL = "https://argentina-trips.com/"; // <-- your homepage
 const ACTION = "accept"; // 'accept' | 'reject' | 'close' (dismiss)
 
 const SELECTORS = {

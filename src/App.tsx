@@ -1,26 +1,33 @@
-import Header from './components/Header'
-import Hero from './components/Hero'
-import Apartments from './components/Apartments'
-import Attractions from './components/Attractions'
-import Services from './components/Services'
-import Testimonial from './components/Testimonial'
-import Footer from './components/Footer'
-import './App.css'
+import React from "react";
+import Header from "./components/Header/Header";
+import Hero from "./components/Hero/Hero";
+import Services from "./components/Services/Services";
+import ArgentinaInfo from "./components/ArgentinaInfo/ArgentinaInfo";
+import LegalCompliance from "./components/LegalCompliance/LegalCompliance";
+import Footer from "./components/Footer/Footer";
+import { seo } from "./config/travel-agency-config";
+import { useSEO } from "./hooks/useSEO";
+import "./App.css";
 
-function App() {
+const App: React.FC = () => {
+  // Set dynamic SEO meta tags
+  useSEO({
+    title: seo.title,
+    description: seo.description,
+  });
+
   return (
-    <div className="app">
+    <>
       <Header />
       <main>
         <Hero />
-        <Apartments />
-        <Attractions />
         <Services />
-        <Testimonial />
+        <ArgentinaInfo />
+        <LegalCompliance />
       </main>
       <Footer />
-    </div>
-  )
-}
+    </>
+  );
+};
 
-export default App
+export default App;
