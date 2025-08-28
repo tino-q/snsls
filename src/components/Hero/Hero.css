@@ -33,7 +33,7 @@
   z-index: 2;
   max-width: 900px;
   padding: 0 var(--container-padding);
-  margin-top: var(--space-3xl);
+  margin-top: var(--space-sm);
 }
 
 .hero h1 {
@@ -73,14 +73,14 @@
   }
 
   .hero-content {
-    margin-top: var(--space-2xl);
+    margin-top: var(--space-xs);
   }
 }
 
 /* Large screens */
 @media (min-width: 1024px) {
   .hero-content {
-    margin-top: var(--space-2xl);
+    margin-top: 0;
   }
 }
 
@@ -94,6 +94,6 @@
   }
 
   .hero-content {
-    margin-top: var(--space-lg);
+    margin-top: var(--space-sm);
   }
 }
