@@ -1,6 +1,6 @@
-import React from 'react';
-import { content, services } from '../../config/travel-agency-config';
-import './Services.css';
+import React from "react";
+import { content, services } from "../../config/locales";
+import "./Services.css";
 
 const Services: React.FC = () => {
   return (

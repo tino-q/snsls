@@ -1,27 +1,32 @@
 import React from "react";
-import { compliance } from "../../config/travel-agency-config";
+import { useLocale } from "../../hooks/useLocale";
+import { getConfig } from "../../config/locales";
 import "./LegalCompliance.css";
 
 const LegalCompliance: React.FC = () => {
+  const locale = useLocale();
+  const config = getConfig(locale);
+  const { compliance } = config;
+
   const complianceItems = [
     {
       icon: "📋",
-      title: "Licencia CICMA",
+      title: compliance.cicmaLicense,
       description: compliance.cicmaDescription,
     },
     {
       icon: "🛡️",
-      title: "Garantía Financiera",
+      title: compliance.financialGuarantee,
       description: compliance.financialGuaranteeDescription,
     },
     {
       icon: "⚖️",
-      title: "Seguro de Responsabilidad",
+      title: compliance.liabilityInsurance,
       description: compliance.liabilityInsuranceDescription,
     },
     {
       icon: "📄",
-      title: "Ley LSSI",
+      title: compliance.lssiLaw,
       description: compliance.lssiCompliance,
     },
   ];
@@ -30,13 +35,12 @@ const LegalCompliance: React.FC = () => {
     <section className="legal-compliance section" id="legal">
       <div className="container">
         <div className="section-intro">
-          <div className="section-subtitle">Garantías y Cumplimiento</div>
-          <h2 className="section-title">
-            Tu Tranquilidad es Nuestra Prioridad
-          </h2>
+          <div className="section-subtitle">
+            {compliance.guaranteesAndCompliance}
+          </div>
+          <h2 className="section-title">{compliance.yourPeaceIsOurPriority}</h2>
           <p className="section-description">
-            Operamos con total transparencia y cumplimiento legal, garantizando
-            la máxima seguridad en cada programa educativo.
+            {compliance.operateWithTransparency}
           </p>
         </div>
         <div className="compliance-grid">

@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { company, legal } from "../../config/travel-agency-config";
+import { company, legal } from "../../config/locales";
+import { useLocale } from "../../hooks/useLocale";
+import LanguageSwitcher from "../LanguageSwitcher/LanguageSwitcher";
 import "./Header.css";
 
 const Header: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const locale = useLocale();
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -40,10 +43,18 @@ const Header: React.FC = () => {
   }, [isMobileMenuOpen]);
 
   const navItems = [
-    { text: "Inicio", href: "/", isHome: true },
-    { text: "Aviso Legal", href: "/aviso-legal", isHome: false },
     {
-      text: "Política de Privacidad",
+      text: locale === "es" ? "Inicio" : "Home",
+      href: "/",
+      isHome: true,
+    },
+    {
+      text: locale === "es" ? "Aviso Legal" : "Legal Notice",
+      href: "/aviso-legal",
+      isHome: false,
+    },
+    {
+      text: locale === "es" ? "Política de Privacidad" : "Privacy Policy",
       href: "/politica-privacidad",
       isHome: false,
     },
@@ -58,7 +69,11 @@ const Header: React.FC = () => {
               {company.name}
             </Link>
             <div className="license-info">
-              <div>Agencia de Viajes Autorizada</div>
+              <div>
+                {locale === "es"
+                  ? "Agencia de Viajes Autorizada"
+                  : "Authorized Travel Agency"}
+              </div>
               <div>CICMA: {legal.cicma}</div>
               <div>NIF: {legal.nif}</div>
             </div>
@@ -80,6 +95,9 @@ const Header: React.FC = () => {
                   </Link>
                 </li>
               ))}
+              <li>
+                <LanguageSwitcher />
+              </li>
             </ul>
           </nav>
 
@@ -115,6 +133,9 @@ const Header: React.FC = () => {
                 </Link>
               </li>
             ))}
+            <li className="mobile-language-switcher">
+              <LanguageSwitcher />
+            </li>
           </ul>
         </div>
 

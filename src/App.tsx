@@ -6,7 +6,7 @@ import Home from "./components/Home/Home";
 import AvisoLegal from "./components/LegalPages/AvisoLegal";
 import PoliticaPrivacidad from "./components/LegalPages/PoliticaPrivacidad";
 import WhatsAppButton from "./components/WhatsAppButton/WhatsAppButton";
-import { seo } from "./config/travel-agency-config";
+import { seo } from "./config/locales";
 import { useSEO } from "./hooks/useSEO";
 import { useScrollToTop } from "./hooks/useScrollToTop";
 import "./App.css";

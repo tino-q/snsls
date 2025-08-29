@@ -230,4 +230,10 @@
   .license-info {
     display: none;
   }
+
+  .mobile-language-switcher {
+    margin-top: var(--space-lg);
+    padding-top: var(--space-lg);
+    border-top: 1px solid var(--color-border);
+  }
 }

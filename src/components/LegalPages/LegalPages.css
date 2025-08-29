@@ -1,7 +1,7 @@
 .legal-page {
   min-height: calc(100vh - var(--header-height));
   background-color: var(--color-white);
-  padding: 3rem 0 2rem 0; /* Reduced top padding from 4rem to 3rem */
+  padding: calc(var(--header-height) + 4rem) 0 2rem 0; /* Increased spacing for fixed header */
 }
 
 .legal-container {
@@ -70,7 +70,7 @@
 @media (max-width: 768px) {
   .legal-page {
     min-height: calc(100vh - var(--header-height-mobile));
-    padding: 2rem 0 1rem 0; /* Reduced top padding from 3rem to 2rem for mobile */
+    padding: calc(var(--header-height-mobile) + 3rem) 0 1rem 0; /* Increased spacing for mobile header */
   }
 
   .legal-container {
@@ -118,7 +118,7 @@
 /* Extra small screens */
 @media (max-width: 480px) {
   .legal-page {
-    padding: 1.5rem 0 1rem 0;
+    padding: calc(var(--header-height-mobile) + 2.5rem) 0 1rem 0;
   }
 
   .legal-container {
@@ -158,7 +158,7 @@
 /* Minimum width support */
 @media (max-width: 400px) {
   .legal-page {
-    padding: 1rem 0 0.5rem 0;
+    padding: calc(var(--header-height-mobile) + 2rem) 0 0.5rem 0;
   }
 
   .legal-container {

@@ -1,5 +1,5 @@
 import React from "react";
-import { company, content } from "../../config/travel-agency-config";
+import { company, content } from "../../config/locales";
 import "./Hero.css";
 
 const Hero: React.FC = () => {

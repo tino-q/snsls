@@ -1,9 +1,14 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { company, contact, legal, footerSections, copyright } from '../../config/travel-agency-config';
-import './Footer.css';
+import React from "react";
+import { Link } from "react-router-dom";
+import { useLocale } from "../../hooks/useLocale";
+import { getConfig } from "../../config/locales";
+import "./Footer.css";
 
 const Footer: React.FC = () => {
+  const locale = useLocale();
+  const config = getConfig(locale);
+  const { company, contact, legal, footerSections, copyright, footer } = config;
+
   return (
     <footer id="contacto">
       <div className="container">
@@ -11,14 +16,20 @@ const Footer: React.FC = () => {
           <div className="footer-section">
             <h3>{company.legalName}</h3>
             <p>
-              {contact.address.street}<br/>
-              {contact.address.postalCode} {contact.address.city}, {contact.address.country}
+              {contact.address.street}
+              <br />
+              {contact.address.postalCode} {contact.address.city},{" "}
+              {contact.address.country}
             </p>
-            <p>Teléfono: {contact.phone}</p>
-            <p>Email: {contact.email}</p>
+            <p>
+              {footer.phone} {contact.phone}
+            </p>
+            <p>
+              {footer.email} {contact.email}
+            </p>
           </div>
           <div className="footer-section">
-            <h3>Información Legal</h3>
+            <h3>{footer.legalInformation}</h3>
             {footerSections.legalLinks.map((link, index) => {
               // Map the legal links to actual routes
               let route = link.href;
@@ -27,7 +38,7 @@ const Footer: React.FC = () => {
               } else if (link.text === "Política de Privacidad") {
                 route = "/politica-privacidad";
               }
-              
+
               return (
                 <Link key={index} to={route} className="footer-link">
                   {link.text}
@@ -36,38 +47,49 @@ const Footer: React.FC = () => {
             })}
           </div>
           <div className="footer-section">
-            <h3>Servicios</h3>
+            <h3>{footer.services}</h3>
             {footerSections.services.map((service, index) => (
-              <a key={index} href={service.href} className="footer-link">{service.text}</a>
+              <a key={index} href={service.href} className="footer-link">
+                {service.text}
+              </a>
             ))}
           </div>
           <div className="footer-section">
-            <h3>Destinos en Argentina</h3>
+            <h3>{footer.destinationsInArgentina}</h3>
             {footerSections.destinations.map((destination, index) => (
-              <a key={index} href={destination.href} className="footer-link">{destination.text}</a>
+              <a key={index} href={destination.href} className="footer-link">
+                {destination.text}
+              </a>
             ))}
           </div>
         </div>
         <div className="footer-bottom">
-          <p>&copy; {copyright.year} {company.legalName} {copyright.text}</p>
           <p>
-            NIF: {legal.nif} | CICMA: {legal.cicma} | {legal.mercantilRegistry.location}, 
-            Tomo {legal.mercantilRegistry.tome}, Folio {legal.mercantilRegistry.folio}, 
-            Sección {legal.mercantilRegistry.section}, Hoja {legal.mercantilRegistry.sheet}
+            &copy; {copyright.year} {company.legalName} {copyright.text}
           </p>
           <p>
-            Garantía financiera constituida mediante póliza de seguro con {legal.financialGuarantee.provider} 
-            nº {legal.financialGuarantee.policyNumber} por importe de {legal.financialGuarantee.amount}
+            NIF: {legal.nif} | CICMA: {legal.cicma} |{" "}
+            {legal.mercantilRegistry.location}, {footer.tomo}{" "}
+            {legal.mercantilRegistry.tome}, {footer.folio}{" "}
+            {legal.mercantilRegistry.folio}, {footer.section}{" "}
+            {legal.mercantilRegistry.section}, {footer.sheet}{" "}
+            {legal.mercantilRegistry.sheet}
           </p>
           <p>
-            Seguro de responsabilidad civil con {legal.liabilityInsurance.provider} 
-            nº {legal.liabilityInsurance.policyNumber} por importe de {legal.liabilityInsurance.amount}
+            {footer.financialGuarantee} {legal.financialGuarantee.provider}{" "}
+            {footer.policyNumber} {legal.financialGuarantee.policyNumber}{" "}
+            {footer.amount} {legal.financialGuarantee.amount}
           </p>
-          
+          <p>
+            {footer.liabilityInsurance} {legal.liabilityInsurance.provider}{" "}
+            {footer.policyNumber} {legal.liabilityInsurance.policyNumber}{" "}
+            {footer.amount} {legal.liabilityInsurance.amount}
+          </p>
+
           {/* KitDigital Compliance Banner */}
           <div className="kit-digital-banner">
-            <img 
-              src="/kit-digital-banner.png" 
+            <img
+              src="/kit-digital-banner.png"
               alt="Kit Digital - Financiado por la Unión Europea NextGenerationEU"
               loading="lazy"
             />
